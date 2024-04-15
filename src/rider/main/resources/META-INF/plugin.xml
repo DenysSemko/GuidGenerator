@@ -1,9 +1,9 @@
 <idea-plugin require-restart="true">
   <id>me.dench327.plugins.guidgenerator</id>
   <name>GuidGenerator</name>
-  <version>1.0.2</version>
+  <version>1.0.3 </version>
   <vendor url="https://github.com/DenisSemko/GuidGenerator">Denys Semko</vendor>
-  <idea-version since-build="233.0" />
+  <idea-version since-build="241.0" />
   <depends>com.intellij.modules.rider</depends>
 
   <description>

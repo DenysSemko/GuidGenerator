@@ -12,3 +12,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## 1.0.2
 - Update plugin to the Rider's version 2023.3.1
+
+## 1.0.3
+- Update plugin to the Rider's version 2024.1
