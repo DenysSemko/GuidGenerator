@@ -1,28 +1,46 @@
 namespace ReSharperPlugin.GuidGenerator;
 
 [ContextAction(
-    Group = CSharpContextActions.GroupID,
+    GroupType = typeof(CSharpContextActions),
     Name = nameof(GenerateUpperCaseGuidInstanceContextAction),
     Description = nameof(GenerateUpperCaseGuidInstanceContextAction),
     Priority = -10)]
-public class GenerateUpperCaseGuidInstanceContextAction : ContextActionBase
+public class GenerateUpperCaseGuidInstanceContextAction(ICSharpContextActionDataProvider provider) : ContextActionBase
 {
-    private readonly ICSharpContextActionDataProvider _provider;
+    public override string Text => Constants.UpperCase.InstanceText;
 
-    public GenerateUpperCaseGuidInstanceContextAction(ICSharpContextActionDataProvider provider)
+    public override bool IsAvailable(IUserDataHolder cache)
     {
-        _provider = provider;
+        var sourceFile = provider.SourceFile;
+        Console.WriteLine("hello");
+        if (!sourceFile.IsValid())
+            return false;
+
+        if (!sourceFile.PrimaryPsiLanguage.Is<CSharpLanguage>())
+            return false;
+
+        // Caret must be inside a type declaration
+        var typeDeclaration = provider.GetSelectedElement<ICSharpTypeDeclaration>(true, true);
+        if (typeDeclaration == null)
+            return false;
+
+        // Don’t show inside comments/strings
+        var token = provider.GetSelectedElement<ITokenNode>(true, true);
+        if (token != null)
+        {
+            var tt = token.GetTokenType();
+            if (tt.IsComment || tt.IsStringLiteral)
+                return false;
+        }
+
+        return true;
     }
 
-    public override string Text => Constants.UpperCase.InstanceText;
-    
-    public override bool IsAvailable(IUserDataHolder cache) => _provider.SelectedElement is not null;
-    
     protected override Action<ITextControl> ExecutePsiTransaction(ISolution solution, IProgressIndicator progress)
     {
         string generatedGuid = Guid.NewGuid().ToString().ToUpper();
         string textToInsert = $"var upperCaseGuid = new Guid(\"{generatedGuid}\");";
-        
-        return GuidHelper.InsertGuid(_provider, textToInsert);
+
+        return GuidHelper.InsertGuid(provider, textToInsert);
     }
 }

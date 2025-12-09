@@ -8,3 +8,6 @@ global using JetBrains.TextControl;
 global using JetBrains.Util;
 global using ReSharperPlugin.GuidGenerator.Helpers;
 global using System;
+global using JetBrains.ReSharper.Psi;
+global using JetBrains.ReSharper.Psi.CSharp;
+global using JetBrains.ReSharper.Psi.Tree;
