@@ -20,8 +20,8 @@
 Guid Generator is a powerful and versatile Rider plugin crafted in C# that takes the hassle out of managing GUIDs. Guided by the mission to simplify your development workflow, this plugin offers a suite of features designed to enhance your productivity and precision.
 
 ## Technologies Used
-- C# 7.0
-- Rider IDE (compatible with Rider version 2023.2.2)
+- .NET 8
+- Rider IDE
 
 ## Features
 1. Generate a New Guid Instance;
@@ -56,12 +56,12 @@ There are two ways how to install the plugin:
   - Find desired `GuidGenerator` context action
   - Be happy
     
-https://github.com/DenisSemko/GuidGenerator/assets/53062219/079c6945-92c3-4aa4-a7dc-597ec1d791b6
+https://github.com/DenysSemko/GuidGenerator/assets/53062219/079c6945-92c3-4aa4-a7dc-597ec1d791b6
 
 ## Project Status
 _v1.0 has been released_
 
-[![Rider](https://img.shields.io/jetbrains/plugin/v/RIDER_PLUGIN_ID.svg?label=Rider&colorB=0A7BBB&style=for-the-badge&logo=rider)](https://plugins.jetbrains.com/plugin/me.dench327.plugins.guidgenerator)
+[![Rider](https://img.shields.io/jetbrains/plugin/v/RIDER_PLUGIN_ID.svg?label=Rider&colorB=0A7BBB&style=for-the-badge&logo=rider)](https://plugins.jetbrains.com/plugin/22951-guidgenerator)
 
 ## Contact
 Created by [@dench327](https://www.linkedin.com/in/denis-semko-551b91191) - feel free to contact me!

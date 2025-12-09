@@ -15,3 +15,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## 1.0.3
 - Update plugin to the Rider's version 2024.1
+
+## 1.1.0
+- Update plugin to .NET 8 support and Rider's version 2025.3.0.3
