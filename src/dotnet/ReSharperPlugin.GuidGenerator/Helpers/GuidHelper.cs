@@ -1,6 +1,8 @@
 namespace ReSharperPlugin.GuidGenerator.Helpers;
 
-public class GuidHelper
+using JetBrains.DocumentModel;
+
+public static class GuidHelper
 {
     public static Action<ITextControl> InsertGuid(ICSharpContextActionDataProvider provider, string textToInsert)
     {
@@ -10,11 +12,10 @@ public class GuidHelper
 
         return textControl =>
         {
-            int caretOffset = provider.CaretOffset;
-            
+            int caretOffset = textControl.Caret.Position.Value.ToDocOffset().AsDocumentOffset(textControl.Document).Offset;
             using (WriteLockCookie.Create())
             {
-                textControl.Document.InsertText(caretOffset, textToInsert);
+                textControl.Document.InsertText(new DocumentOffset(textControl.Document, caretOffset), textToInsert);
                 textControl.Caret.MoveTo(caretOffset + textToInsert.Length, CaretVisualPlacement.DontScrollIfVisible);
             }
         };
