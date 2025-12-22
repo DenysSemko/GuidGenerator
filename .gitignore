@@ -13,6 +13,7 @@ output
 *.cache
 
 # IDEs
+/.idea/
 /.idea/*.iml
 /.idea/*.xml
 /.idea/.idea.*/*.iml
